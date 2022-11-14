@@ -28,18 +28,12 @@ app.use(express.static(publicPath));
 //     console.log(req.body)
 // });
 
-app.get('/',(req,resp)=>{
-    con.query(`select * from user`,(err,result)=>{
-        if(err){
-            resp.send(err)
-        }
-        else{
-            resp.send(result)
-        }
+app.get('/list',(req,resp)=>{
+ const data = con.query(`select * from user`,(err,result)=>{
+        resp.render('list',{data})
     })
 });
 
-app.get('/list')
 
 // app.post('/',(req,resp)=>{
 //     const data = {taskdata:"day2",taskpr:"admin",taskdate:"22/05/2023"}
