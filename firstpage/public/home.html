@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+    <title>Todo-List</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <style>
+      .main-section {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+      }
+      .main-section form{
+        margin-bottom: 20px;
+      }
+      #add {
+    width: 28px;
+    background: rgb(55, 108, 55);
+    display: inline-block;
+    text-align: center;
+    margin-right: 10px;
+    }
+
+    #delete {
+    width: 28px;
+    background: rgb(165, 44, 44);
+    display: inline-block;
+    text-align: center;
+    }
+    </style>
+  </head>
+  <body style="text-align:center">
+    <section id="main" class="main-section">
+      <h2>Todo-List</h2>
+      <form method="post" action="/">
+        <input name="taskname" type="text" placeholder="text" value="" />
+        <select name="taskpr" id="">
+          <option value="admin">Admin</option>
+          <option value="user">User</option>
+          <option value="viewer">viewer</option>
+        </select>
+        <input type="date" id="" name="taskdate" />
+        <a id="add">+</a>
+        <input href="list.html" id="submit" type="submit" name="submittask" >
+
+      </form>  
+    </section>
+    
+    <script>
+        document.getElementById("#submit");
+
+        $("#add").click(function () {
+          newRowAdd = `<form id='new-task' action="">
+          <input name="taskname" type="text" placeholder="text" value="" />
+          <select name="taskpr" id="">
+              <option value=""> Admin </option>
+              <option value=""> User </option>
+              <option value=""> viewer </option>
+          </select>
+          <input type="date" id="" name="taskdate">
+        <a id="delete">X</a>
+        </form>`;
+
+          $("#main").append(newRowAdd);
+        });
+
+        $("body").on("click", "#delete", function () {
+          $(this).parents("#new-task").remove();
+        });
+    </script>
+  </body>
+</html>
